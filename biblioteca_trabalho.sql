@@ -69,6 +69,12 @@ CREATE TABLE `livro` (
   `Sinopse` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `admin`
+--
+
+INSERT INTO `livro` ('idLivro', `Titulo`, `Autor`, 'Genero', 'Ano', 'Sinopse') VALUES
+(1, 'A Auto-Estrada', 'Stephen King', 'Suspense', '1981', 'De luto pela morte de seu único filho, desempregado e vendo o casamento desmoronar, George Dawes se agarra à casa em que mora, onda as lembranças da infância e do filho ainda lhe trazem algum conforto. Isso até que sua esposa decide vender o imóvel para uma construtora, que por sua vez pretende demoli-la para a construção de uma autoestrada. Desnorteado e sem nada a perder, Dawes entra em uma loja para comprar duas armas, muita munição e todo tipo de material explosivo disponível. Aí tem início uma implacável jornada cujo foco é destruição das obras da rodovia, sua inimiga declarada. Escrevendo sob o pseudônimo de Richard Bachman, Stephen King faz de A autoestrada um mergulho profundo no luto e na superação. Escrito e publicado pouco depois da morte da mãe do autor, King diz que o livro “tenta encontrar algumas respostas para os mistérios que envolvem as dores humanas”.');
 -- --------------------------------------------------------
 
 --
@@ -82,12 +88,6 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `usuario`
---
-
-INSERT INTO `usuario` (`idUsuario`, `Email`, `Senha`) VALUES
-(1, 'jhdsjdkf@gmail.com', '555');
-
 --
 -- Índices para tabelas despejadas
 --
