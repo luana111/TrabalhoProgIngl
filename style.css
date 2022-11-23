@@ -5,7 +5,44 @@
 }
 
 html,body{
-    height:100vh;
+    background-size: 100%;
+    background-color: rgb(82, 185, 95)/*lightgreen*/;
+}
+
+fieldset{
+    border: 4px double;
+    border-color: rgb(10, 107, 10);
+    background-color: white;
+}
+
+.login{
+    text-align: center;
+    border: solid;
+    width: 50%;
+    margin: 0 auto; /*0 vertical e 50% nas horizontais*/
+}
+.logo_ifrs{
+    display: block;
+    text-align: center;
+    background-color: rgb(7, 99, 7);
+}
+
+a{
+    text-decoration: none;
+    display: solid;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px;
+    border-color: black;
+}
+a:hover{
+    background-color: rgb(82, 185, 95);
+    color: black;
+}
+.botao{
+    cursor: pointer;
 }
 
 .container{
@@ -27,38 +64,6 @@ header{
 
 header h1{
     padding: 10px;
-}
-
-nav{
-    grid-area: nav;
-    background-color: blueviolet;
-    padding-top: 10px;
-}
-
-nav ul{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-nav > ul > li{
-    text-align: center;
-    padding: 10px;
-    width: 100%;
-}
-
-a{
-    text-decoration: none;
-    display: block;
-    background-color: white;
-    color: brown;
-
-}
-
-a:hover{
-    background-color: brown;
-    color: white;
 }
 
 main{
