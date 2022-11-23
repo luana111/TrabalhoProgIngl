@@ -17,18 +17,13 @@ $contatos = Pessoa::findallByUsuario($_SESSION['idUsuario']);
     <title>Página de Contatos</title>
 </head>
 <body>
-<div class="container">
-        <header>
-            <img src="logo_ifrs.png">
-        </header>
-<nav>
-            <ul>
-                <li><a href="restrita.php">Inicio</a></li>
-                <li><a href='sair.php'>Sair</a></li>
-            </ul>
-        </nav>
-        <main>
-        <h1>AQUI VAI TODOS OS LIVROS</h1>
+<div class="logo_ifrs">
+        <img src="logo_feliz_ifrs.png">
+    </div>
+    <br>
+    <div class="adm">
+        <h1>AQUI VAI TODOS OS LIVROS - Administrador</h1>
+
     <table>
     <tr>
         <td>Nome</td>
@@ -51,15 +46,11 @@ $contatos = Pessoa::findallByUsuario($_SESSION['idUsuario']);
     ?>
 </table>
         </main>
-        <footer>
+        <footer id='page-footer'>
             <h3>Programação 3 - 2022</h3>
         </footer>
 </div>
 </body>
 </html>
-
-
-
-
 
 
