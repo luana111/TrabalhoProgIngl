@@ -2,7 +2,7 @@
 if(isset($_POST['botao'])){
     require_once __DIR__."/vendor/autoload.php";
     $u = new Usuario($_POST['email'],$_POST['senha']);
-    if($u->authenticate()){
+    if($u->authenticate()){  
         header("location: restrita.php");
     }else{
         header("location: index.php");
@@ -34,7 +34,7 @@ if(isset($_POST['botao'])){
         <input type='email' name='email' id='email' required>
         <br>
         <label for='senha'>Senha:</label>
-        <input type='password' name='senha' id=senha' required>
+        <input type='password' name='senha' id='senha' required>
         <input type='submit' class='botao' name='botao' value='Acessar'>
     </form>
     <br>
