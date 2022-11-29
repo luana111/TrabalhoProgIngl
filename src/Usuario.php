@@ -3,6 +3,7 @@
 class Usuario implements ActiveRecord{
 
     private int $idUsuario;
+    private int $admin;
     
     public function __construct(private string $email,private string $senha){
     }
@@ -15,6 +16,13 @@ class Usuario implements ActiveRecord{
         return $this->idUsuario;
     }
 
+    public function setadmin(int $admin):void{
+        $this->admin = $admin;
+    }
+
+    public function getadmin():int{
+        return $this->admin;
+    }
     public function setSenha(string $senha):void{
         $this->senha = $senha;
     }
@@ -33,33 +41,34 @@ class Usuario implements ActiveRecord{
 
     public function save():bool{
         $conexao = new MySQL();
-        $this->senha = password_hash($this->senha,PASSWORD_BCRYPT); 
+        //$this->senha = password_hash($this->senha,PASSWORD_BCRYPT); 
         if(isset($this->idUsuario)){
-            $sql = "UPDATE usuarios SET email = '{$this->email}' ,senha = '{$this->senha}' WHERE idUsuario = {$this->idUsuario}";
+            $sql = "UPDATE usuario SET Email = '{$this->email}',Senha = '{$this->senha}' WHERE idUsuario = {$this->idUsuario}";
         }else{
-            $sql = "INSERT INTO usuarios (email,senha) VALUES ('{$this->email}','{$this->senha}')";
+            $sql = "INSERT INTO usuario (Email,Senha,admin) VALUES ('{$this->email}','{$this->senha}',0 )";
         }
         return $conexao->executa($sql);
     }
 
     public static function find($idUsuario):Usuario{
         $conexao = new MySQL();
-        $sql = "SELECT * FROM usuarios WHERE idUsuario = {$idUsuario}";
+        $sql = "SELECT * FROM usuario WHERE idUsuario = {$idUsuario}";
         $resultado = $conexao->consulta($sql);
-        $u = new Usuario($resultado[0]['email'],$resultado[0]['senha']);
+        $u = new Usuario($resultado[0]['Email'],$resultado[0]['Senha']);
         $u->setIdUsuario($resultado[0]['idUsuario']);
+        $u->setadmin($resultado[0]['admin']);
         return $u;
     }
 
     public function delete():bool{
         $conexao = new MySQL();
-        $sql = "DELETE FROM usuarios WHERE idUsuario = {$this->idUsuario}";
+        $sql = "DELETE FROM usuario WHERE idUsuario = {$this->idUsuario}";
         return $conexao->executa($sql);
     }
 
     public static function findall():array{
         $conexao = new MySQL();
-        $sql = "SELECT * FROM usuarios";
+        $sql = "SELECT * FROM usuario";
         $resultados = $conexao->consulta($sql);
         $usuarios = array();
         foreach($resultados as $resultado){
@@ -72,12 +81,13 @@ class Usuario implements ActiveRecord{
 
     public function authenticate():bool{
         $conexao = new MySQL();
-        $sql = "SELECT idUsuario,senha FROM usuarios WHERE email = '{$this->email}'";
+        $sql = "SELECT idUsuario,Senha FROM usuario WHERE Email = '{$this->email}'";
         $resultados = $conexao->consulta($sql);
-        if(password_verify($this->senha,$resultados[0]['senha'])){
+        //if(password_verify($this->senha,$resultados[0]['Senha'])){
+        if($this->senha == $resultados[0]['Senha']){
             session_start();
             $_SESSION['idUsuario'] = $resultados[0]['idUsuario'];
-            $_SESSION['email'] = $resultados[0]['email'];
+            $_SESSION['email'] = $resultados[0]['Email'];
             return true;
         }else{
             return false;

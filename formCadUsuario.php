@@ -15,10 +15,9 @@ if(isset($_POST['botao'])){
     <title>Adiciona Usuario</title>
 </head>
 <body>
-<div class="container">
-        <header>
-            <img src="logo_ifrs.png">
-        </header>
+    <div class="logo_ifrs">
+        <img src="logo_feliz_ifrs.png">
+</div>
     <form action='formCadUsuario.php' method='post'>
         <label for='email'>E-mail:</label>
         <input type='email' name='email' id='email' required>

@@ -96,3 +96,9 @@ if($usuaria->getadmin()==1){
 </div>
 </body>
 </html>
+
+
+
+
+
+
